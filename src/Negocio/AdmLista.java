@@ -5,6 +5,8 @@
  */
 package Negocio;
 
+import Datos.Nodo;
+
 /**
  *
  * @author SRVAdmin
@@ -12,8 +14,30 @@ package Negocio;
 public class AdmLista {
     private Lista lista;
 
-    public AdmLista(Lista lista) {
-        this.lista = lista;
+    
+
+    public AdmLista() {
+        this.lista = new Lista();
+    }
+    
+    public boolean agregar(String valor)
+    {
+        int val=Integer.parseInt(valor);
+        boolean resultado= lista.agregarAlInicio(val);     
+        
+        return resultado;
+    }
+    
+    public boolean agregarfinal(String valor)
+    {
+        int val=Integer.parseInt(valor);
+        boolean resultado= lista.agregarAlFinal(val);     
+        
+        return resultado;
+    }
+    public Nodo getLista()
+    {
+        return lista.getLista();
     }
     
     

@@ -6,6 +6,7 @@
 package Negocio;
 
 import Datos.Nodo;
+import java.lang.invoke.MethodHandles;
 
 /**
  * Clase que define las operaciones básicas que debe tener una lista simple.
@@ -43,36 +44,44 @@ public class Lista {
      * Agrega un nuevo nodo al final de la lista.
      * @param valor a agregar.
      */
-    public void agregarAlFinal(int valor){
-        // Define un nuevo nodo.
-        Nodo nuevo = new Nodo();
-        // Agrega al valor al nodo.
-        nuevo.setValor(valor);
-        // Consulta si la lista esta vacia.
-        if (esVacia()) {
-            // Inicializa la lista agregando como inicio al nuevo nodo.
-            inicio = nuevo;
-        // Caso contrario recorre la lista hasta llegar al ultimo nodo
-        //y agrega el nuevo.
-        } else{
-            // Crea ua copia de la lista.
-            Nodo aux = inicio;
-            // Recorre la lista hasta llegar al ultimo nodo.
-            while(aux.getSiguiente() != null){
-                aux = aux.getSiguiente();
-            }
-            // Agrega el nuevo nodo al final de la lista.
-            aux.setSiguiente(nuevo);
+    public boolean agregarAlFinal(int valor){
+        try{        
+            // Define un nuevo nodo.
+            Nodo nuevo = new Nodo();
+            // Agrega al valor al nodo.
+            nuevo.setValor(valor);
+            // Consulta si la lista esta vacia.
+            if (esVacia()) {
+                // Inicializa la lista agregando como inicio al nuevo nodo.
+                inicio = nuevo;
+            // Caso contrario recorre la lista hasta llegar al ultimo nodo
+            //y agrega el nuevo.
+            } else{
+                // Crea ua copia de la lista.
+                Nodo aux = inicio;
+                // Recorre la lista hasta llegar al ultimo nodo.
+                while(aux.getSiguiente() != null){
+                    aux = aux.getSiguiente();
+                }
+                // Agrega el nuevo nodo al final de la lista.
+                aux.setSiguiente(nuevo);
+                }
+            // Incrementa el contador de tamaño de la lista
+            tamanio++;
+            return true;
         }
-        // Incrementa el contador de tamaño de la lista
-        tamanio++;
+            catch(Exception ex)
+            {
+              return false;
+            }
     }
     /**
      * Agrega un nuevo nodo al inicio de la lista.
      * @param valor a agregar.
      */   
-    public void agregarAlInicio(int valor){
+    public boolean agregarAlInicio(int valor){
         // Define un nuevo nodo.
+      try{
         Nodo nuevo = new Nodo();
         // Agrega al valor al nodo.
         nuevo.setValor(valor);
@@ -89,6 +98,13 @@ public class Lista {
         }
         // Incrementa el contador de tamaño de la lista.
         tamanio++;
+        return true;
+      }
+      catch(Exception ex)
+      {
+       return false;
+      }
+        
     }
     /**
      * Inserta un nuevo nodo despues de otro, ubicado por el valor que contiene.
@@ -391,5 +407,10 @@ public class Lista {
                 i++;
             }
         }
+    }
+    
+    public Nodo getLista()
+    {
+        return inicio;
     }
 }
