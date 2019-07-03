@@ -242,6 +242,15 @@ public class Lista {
         // Retorna el resultado de la bandera.
         return encontrado;
     }
+    
+    public Nodo BuscarNodo(int valor){
+        Nodo aux = this.inicio;
+        while(aux!=null && !(valor==aux.getValor())){
+           aux = aux.getSiguiente();
+        }
+        return aux;
+
+      }
     /**
      * Consulta la posición de un elemento en la lista
      * @param referencia valor del nodo el cual se desea saber la posición.
