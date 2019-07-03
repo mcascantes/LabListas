@@ -418,6 +418,22 @@ public class Lista {
         }
     }
     
+    public int contarRepetidos(int valor){
+            int cont=0;
+          Nodo aux1 = this.BuscarNodo(valor);
+          Nodo aux2;
+          while(aux1!=null)
+          {
+            aux2= aux1.getSiguiente();
+            if(aux1==aux2)
+            {
+              cont++;
+            }
+         
+          }
+          return cont;
+          }
+    
     public Nodo getLista()
     {
         return inicio;
